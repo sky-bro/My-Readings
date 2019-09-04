@@ -165,8 +165,121 @@
 
 ## 第4章 基于对象的编程风格
 
+* class名称被视为一个类型名称，Class Object的初始化方式有很多种
+
+  * ```c++
+    #include <string>
+    #include <vector>
+    string pooh[4] = {"winnie", "robin", "eeyore", "piglet"};
+    string dummy("dummy");
+    vector<string> svec1(4);
+    vector<string> svec2(4, dummy);
+    vector<string> svec3(pooh, pooh+4);
+    ```
+
+* 每个class都会提供一组操作函数
+
+  * 具名函数
+  * 重载运算符：如equality和assignment运算符
+
+* 一般class由两部分组成：public和private
+
+  * private member只能在member function或是class **friend**内被访问
+
+* class用户通常不关心实现细节，身为一个用户，只利用其公开接口来进行编程
+
+* 实现一个string stack class
+
+  * ```c++
+    // Stack Class的起始定义
+    class Stack {
+      public:
+        bool push(const string&);
+        bool pop(string &elem);
+        bool peek(string &elem);
+        
+        bool empty();
+        bool full();
+        
+        int size() { return _stack.size(); }
+        
+      private:
+        vector<string> _stack;
+    };
+    ```
+
+  * 如果函数在class主体内定义，这个member function会自动地被视为inline函数
+
+  * ```c++
+    // 使用Stack Class Object
+    void fill_stack(Stack &stack, istream &is = cin)
+    {
+        string str;
+        while (is >> str && ! stack.full())
+            stack.push(str);
+        
+        cout << "Read in " << stack.size() << " elements\n";
+    }
+    ```
+
+  * ```c++
+    // class主体外定义inline member function，和上面的class定义同放在Stack.h文件
+    inline bool
+    Stack::empty()
+    {
+        return _stack.empty();
+    }
+    
+    inline bool Stack::full()
+    {
+        return _stack.size() == _stack.max_size();
+    }
+    ```
+
+  * ```c++
+    // Stack member function的定义，放在Stack.cpp文件
+    bool
+    Stack::pop(string &elem)
+    {
+        if (empty())
+            return false;
+        
+        elem = _stack.back();
+        _stack.pop_back();
+        return true;
+    }
+    
+    bool Stack::peek(string &elem)
+    {
+        if (empty())
+            return false;
+        
+        elem = _stack.back();
+        return true;
+    }
+    
+    bool Stack::push(const string &elem)
+    {
+        if (full())
+            return false;
+        
+        _stack.push_back(elem);
+        return true;
+    }
+    ```
+
+  * 对于inline函数而言，定义于class主体内或主体外，并没有什么分别， 然而就像non-member inline function一样，它也应该被放在头文件中。
+
+  * non-inline (member) function 应该在程序代码文件中定义，该文件通常和class同名
+
+* 添加构造函数Constructor和析构函数Destructor
+
+  * 
+
 ## 第5章 面对对象编程风格
 
 ## 第6章 以template进行编程
+
+* 被参数化的类型
 
 ## 第7章 异常处理
