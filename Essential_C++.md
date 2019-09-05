@@ -275,7 +275,61 @@
 
 * 添加构造函数Constructor和析构函数Destructor
 
-  * 
+  * Constructor可以被重载，Destructor不可
+  
+  * Destructor没有返回值，没有参数
+  
+  * ```c++
+    class Triangular {
+      public:
+        // 一组重载的constructor
+        Triangular(); // default constructor
+        Triangular(int len);
+        Triangular(int len, int beg_pos);
+        
+        // ...
+    };
+    ```
+  
+  * ```c++
+    Triangular t; // 调用default constructor
+    Triangular t2(10, 3);
+    Triangular t3 = 8; // 注意，这里究竟是调用Constructor还是assignment operator呢，答案是（单一参数的）Constructor
+    Triangular t4(); // 这里将t4定义为一个函数，正确声明方式应该和上面的t一样 Triangular t4;
+    ```
+  
+  * default Constructor不需要任何参数，有两种情况
+  
+    1. 不接受任何参数
+    2. 更常见的，为每个参数提供了默认值`Triangular(int len = 1, int bp = 1);`
+  
+  * Member Initialization List （成员初始化列表）
+  
+    * 主要用于将参数传给member class object的constructor
+  
+  * 合适需要定义Destructor而何时不需要
+  
+* copy Constructor
+
+  * 默认情形下，当我们以某个class object作为另一个object的初值，class data member会被依次复制
+  * 如果需要改变这种成员逐一初始化的形式，我们应该提供copy Constructor， 而且也还应该提供copy assignment operator
+
+* 何谓mutable和const
+
+  * 在member function身上标注const，以此告诉编译器，这个member function不会改变class object的内容
+  * 将某个成员变量标记为mutable，那么对其改变将不会影响object的constness
+
+* this指针
+
+* static class member
+
+  * 对于class而言，static data member只有唯一一份实体，因此我们必须在程序代码文件中提供其清楚的定义
+  * 在class member function中访问static data member，其方式犹如访问一般non-static数据成员
+  * 对于const static member，可以在其声明时为其明确指定初值（class内给初值或者程序代码文件中给初值，只能一处给）
+  * member function 只有在不访问任何non-static member的情况下才可以被声明为static
+  * class内部声明static，程序代码文件中无须再加static关键字
+
+* 打造一个Iterator Class
 
 ## 第5章 面对对象编程风格
 
