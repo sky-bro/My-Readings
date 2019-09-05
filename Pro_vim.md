@@ -166,6 +166,39 @@
 
 ## CH04 Files
 
+* many ways to manage our files, including
+  * various optioins for opening
+  * ability to handle the many different scenarios of modified files and multiple file format types
+  * options for how we might preview files in their native applications
+  * multiple options for creating new files or reading content from another file into our current buffer, as well as for utilizing templates to load for specific file types
+  * ability to modify our working directory from within wim
+  
+* Opening Files
+  * can open files from within or outside of vim
+    * `e: /path/to/your/file.txt`
+    * `:e<Space><Tab>` or `:e<Space><C-d>`
+  * single file or multiple files (glob, `vim *.txt`)
+  
+* File Formats
+
+  * | System |         EOL          |
+    | :----: | :------------------: |
+    |  dos   | `<CR><NL>` or `<NL>` |
+    |  mac   |        `<CR>`        |
+    |  unix  |        `<NL>`        |
+
+  * vim lets us change the file format while we are editing it -- `:set fileformat=dos`
+
+* Inserting Files
+
+  * inject content from another file
+  * dynamically input content based on the result of a shell script
+  * `:read file2.txt`
+  * `8read file2.txt` content of `file2.txt` being placed on the line directly below the line we specified (which in this example, is line 8)
+  * `:read !<shell_command>`
+
+* Moving Between Files
+
 ## CH05 Commands
 
 ## CH06 Registers
