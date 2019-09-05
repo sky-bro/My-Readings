@@ -53,3 +53,43 @@
   * msfgui
   * **msfconsole**
   * msfcli
+
+## 第2章 赛宁 VS. 定V——渗透测试实验环境
+
+* 渗透测试实验环境拓扑结构
+
+* 攻击机环境
+
+  * Back Track
+
+* 靶机环境
+
+  1. OWASP BWA(Broken Web Apps)靶机镜像
+  2. Linux Metasploitable靶机镜像
+  3. Win2K3 Metasploitable靶机镜像
+     * Metasploit最主要的渗透攻击模块还是集中在Windows环境，但windows系统和上层大多软件属于商业软件
+  4. WinXP Metasploitable靶机镜像
+
+* 分析环境
+
+  1. Wireshark 网络抓包与协议分析
+  2. IDA Pro 逆向工程分析工具
+  3. OllyDbg 动态调试工具
+  4. Tamper Data & Hackbar Web应用分析辅助插件
+  5. OWASP WebScarab
+  6. **Burp Suite**
+
+* **渗透测试实验环境搭建**
+
+  * 网络环境配置
+
+  * 虚拟机镜像配置
+
+    * 按照介绍先后，因为先后次序会影响到DHCP分配的IP地址
+    * 当然也可以按照我们的IP地址表进行手工分配
+
+    1. 配置Back Track攻击机环境
+    2. 配置靶机与分析机环境
+
+## 第3章 揭开“战争迷雾”——情报搜集技术
+
