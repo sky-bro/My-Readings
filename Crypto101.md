@@ -59,7 +59,19 @@
 
 * DES and 3DES
 
+  * DES is no longer secure mainly due to its tiny key size of 56 bits
+  * The DES algorithm actually takes a 64 bit key input, but the remaining 8 bits are only used for parity checking, and are discarded immediately
+  * on modern hardware, DES can be brute forced in less than a day.
+  * 3DES: input is first encrypted, then decrypted, then encrypted again
+    * $C = E_{DES}(k_1, D_{DES}(k_2, E_{DES}(k_3, p)))$
+    * The three keys could all be chosen independently (168 key bits), or $k_3 = k_1$ (112 bits), or $k_1 = k_2 = k_3$, which is just plain old DES---for backwards compatibility
+  * Use AES instead of 3DES, more secure, and much faster
+
 * Remaining problems
+
+  * we can only send messages of a very limited length: the block length of the block cipher
+  * we'd like to be able to send much larger messages, or, ideally, streams of indeterminate size. --- addressed with a **stream cipher**
+  * though key size has been reduced, it still needs a way to be shared and agreed on, potentially over an insecure channel. --- addressed with a **key exchange protocol**
 
 ## CHAPTER 5. EXCLUSIVE OR
 
