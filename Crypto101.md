@@ -73,5 +73,53 @@
   * we'd like to be able to send much larger messages, or, ideally, streams of indeterminate size. --- addressed with a **stream cipher**
   * though key size has been reduced, it still needs a way to be shared and agreed on, potentially over an insecure channel. --- addressed with a **key exchange protocol**
 
-## CHAPTER 5. EXCLUSIVE OR
+## CHAPTER 7. Stream ciphers
+
+* a symmetric-key encryption algorithm that **encrypts a stream of bits**, as long as we like.
+
+* A naive attempt with block ciphers: **ECB**(Electronic Code Book)
+  
+  * Visual inspection of an encrypted stream
+    * simulate block ciphers of various block sizes and apply it to an image --- to visually inspect the problem
+    * AES is the workhorse of modern block ciphers ---- it can't be at fault, certainly **not because of an insufficient block size**
+    * with an idealized encryption, the picture would look like **random noise**
+  * Encryption oracle attack
+    * oracle: $C=ECB(E_k, A||S)$
+    * one bit at a time
+  
+* many ways that **block ciphers** can be used to **construct stream ciphers**
+
+* CBC(cipher block chaining) mode:
+
+  * plaintext blocks are XORed with the previous ciphertext block before being encrypted by the block cipher.
+
+  * pick an **initialization vector (IV)** to XOR with the first plaintext block
+
+  * IV will be cryptographically random, typically just added to ciphertext messages.
+
+  * it's important to remember that an attacker must not be able to predict ahead of time what a give IV will be. ---- **an attack on predictable CBC IVs**
+
+    * > While CBC mode itself is not inherently insecure, its paticular use in TLS 1.0 was. This eventually led to the **Browser Exploit Against SSL/TLS (BEAST)** attack
+
+  * **Attacks on CBC mode with predictable IVs**
+
+  * **Attacks on CBC mode with the key as the IV**
+
+  * **CBC bit flipping attacks**
+
+  * Padding
+
+  * **CBC padding attacks**
+
+  * Native stream ciphers
+
+  * RC4
+
+  * Salsa20
+
+  * Native stream ciphers versus modes of operation
+
+* CTR mode (counter mode)
+
+
 
