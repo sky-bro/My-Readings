@@ -199,6 +199,62 @@
 
 * Moving Between Files
 
+  * when we have multiple files open (i.e. multiple buffers created), to move between them:
+    * `:bn` move to the next buffer in the list
+    * `:b5` move to the fifth buffer
+    * `bp` same as `:bn` but in reverse
+    * `:ls` list out all buffers that are available
+    * `:b#` move to the alternative buffer, can also use the key mapping: `<C-6>` or `<C-^>`, depending on your system
+    * `:bf` to the first
+    * `:bl` to the last
+    * `:bm` to the **next modified buffer**
+
+* Saving Files(write our buffer back to the source file)
+
+  * `:w` write buffer content back to the source file
+  * `:1w!` `:1,2w!` partial write(write certain lines)
+  * `:wq` save and close ("write" and "quit")
+  * `:x` same as above, but write only when modified
+  * `:qa` quit all buffer
+  * `:wqa` write all buffer then quit
+  * `:conf wqa` precede with the "confirm" command to let vim notify you of any problems before attempting to quit.
+
+* Creating New Files
+
+  * to create a new empty buffer
+    * `:new`  `<C-w>n` horizontal split window
+    * `:enew` within the current window/viewport (it doesn't create a split)
+    * `:vnew` `<C-w>v` vertical split window
+    * `:tabnew` new buffer in a new tab
+
+* Creating New Files from a Template
+
+  * static
+    * in your `.vimrc` file: `autocmd BufNewFile *.html 0r ~/skeleton.html`
+  * [dynamic](https://vim.fandom.com/wiki/Use_eval_to_create_dynamic_templates)
+
+* Creating a Scratch Buffer
+
+  * to be disposable
+
+  * ```VimL
+    :set buftype=nofile
+    :set bufhidden=hide
+    :setlocal noswapfile
+    ```
+
+  * `scratch.vim` plugin
+
+    * `:Scratch` creates a scratch buffer (with the name `__Scratch__` in the current window)
+    * `:Sscratch` horizontal split window
+
+* File Name Modifiers
+
+  * take the form of `%(:option)`
+  * `:!open -a Google\ Chrome.app %:p`
+  * `:cd %:p:h` minus "head" (which is the file name)
+  * `:lcd` same as `:cd` but only changes the working directory for the current window
+
 ## CH05 Commands
 
 ## CH06 Registers
