@@ -165,7 +165,6 @@
 
 ## 第4章 基于对象的编程风格
 
-<<<<<<< HEAD
 * class名称被视为一个类型名称，Class Object的初始化方式有很多种
 
   * ```c++
@@ -330,6 +329,139 @@
   * class内部声明static，程序代码文件中无须再加static关键字
 
 * 打造一个Iterator Class
+
+  * 必须提供以下操作方式
+  
+    * ```c++
+      Triangular trian(1, 8);
+      Triangular::iterator it = trian.begin(),
+      end_it = trian.end();
+      while (it != end_it) {
+          cout << *it << ' ';
+          ++it;
+      }  
+      ```
+  
+  * 即必须为此iterator class定义!=、*、++等运算符
+  
+    * ```c++
+      class Triangular_iterator {
+          public:
+          Triangular_iterator(int index): _index(index-1){}
+          bool operator==(const Triangular_iterator&) const;
+          bool operator!=(const Triangular_iterator&) const;
+          int operator*() const;
+          Triangular_iterator& operator++(); // 前置(prefix)版
+          Triangular_iterator operator++(int); // 后置(postfix)版
+          private:
+          void check_integrity() const;
+          int _index;
+      }
+      ```
+  
+    * Triangular_iterator维护一个索引值，用以索引Triangular中用来存储数列元素那个static data member，也就是_elems。要达到这个目的，Triangular必须赋予Triangular_iterator的member function特殊的访问权限（friend机制）
+  
+    * 任何运算符如果和另一个运算符性质相反，我们通常会以后者实现出前者，例如
+  
+      * ```c++
+        inline bool Triangular_iterator::operator!=(const Triangular_iterator &rhs) const {
+          return !(*this == rhs);
+        }
+        ```
+  
+  * 运算符重载规则
+  
+    * 不可以引入新的运算符。除了`. * :: ?:`四个运算符，其它的运算符皆可被重载
+    * 运算符的操作数个数不可改变
+    * 运算符的优先级不可改变
+    * 运算符的参数列表中，必须至少有一个参数为class类型，也即我们无法为non-class类型重新定义其原已存在的运算符
+  
+  * 定义运算符的两种风格/方式
+  
+    * ```c++
+      // 运算符的定义方式可以像member function一样
+      inline int Triangular_iterator::operator*() const {
+        check_integrity();
+        return Triangular::_elems[_index];
+      }
+      ```
+  
+    * ```c++
+      // 运算符的定义方式也可以像non-member function一样
+      inline int operator*(const Triangular_iterator &rhs) {
+        // 注意，如果这是个non-member function，就不具备访问non-public member的权利
+        // 所以这里访问的rhs成员都需要是public的或者该function是该class的friend
+        rhs.check_integrity();
+        return Triangular::_elems[rhs._index];
+      }
+      ```
+  
+  * `check_integrity()` member function可以确保`_index`不大于`_max_elems`，并确保`_elems`存储了必要的元素
+  
+    * ```c++
+      inline void Triangular_iterator::check_integrity() const {
+        if (_index >= Triangular::max_elems)
+          throw iterator_overflow();
+        // 必要时扩展vector的容量
+        if (_index >= Triangular::_elems.size())
+          Triangular::gen_elements(_index+1);
+      }
+      ```
+  
+  * 下面提供递增运算符`++`的前置和后置两个版本
+  
+    * ```c++
+      // 前置版本
+      inline Triangular_iterator& Triangular_iterator::operator++() {
+        ++_index;
+        check_integrity();
+        return *this;
+      }
+      ```
+  
+    * ```c++
+      // 后置版本
+      inline Triangular_iterator Triangular_iterator::operator++(int) {
+        Triangular_iterator tmp = *this;
+        ++_index;
+        check_integrity();
+        return tmp;
+      }
+      ```
+  
+    * **编译器会自动为后置版产生一个int参数（其值必为0）**
+  
+  * 接下来为Triangular提供一组`begin()/end()` member function，需要用到嵌套类型nested type
+  
+    * ```c++
+      class Triangular {
+        public:
+          typedef Triangular_iterator iterator;
+          
+          Triangular_iterator begin() const {
+            return iterator(_beg_pos);
+          }
+      
+          Triangular_iterator end() const {
+            return iterator(_beg_pos+_length);
+          }
+          // ...
+      
+        private:
+          int _beg_pos;
+          int _length;
+          // ...
+      };
+      ```
+  
+    * 如果将iterator嵌套放在每个提供iterator抽象概念的class内，我们就可以提供有着相同名称的多个定义，但是这样的声明语法有些复杂**？有啥复杂**
+  
+      * ```c++
+        Fibonacci::iterator fit = fib.begin();
+        Pell::iterator pit = pel.begin();
+        ```
+  
+* 
 
 ## 第5章 面对对象编程风格
 
