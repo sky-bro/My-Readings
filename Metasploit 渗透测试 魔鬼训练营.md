@@ -146,6 +146,256 @@
 
 * 主机探测与端口扫描
 
+  * 活跃主机扫描
+
+    * ICMP Ping命令
+      * Ping(Packet Internet Grope)是一个用于测试网络连接的程序
+      * 会发送一个ICMP echo请求消息给目的主机，并报告应答情况
+    * Metasploit的主机发现模块
+      * Metasploit中提供了一些辅助模块可用于活跃主机的发现，位于`modules/auxiliary/scanner/discovery`下
+      * 主要有：arp_sweep、ipv6_multicast_ping、ipv6_neighbor、ipv6_neighbor_router_advertisement、udp_probe、udp_sweep
+      * arp_sweep使用ARP请求枚举本地局域网中的所有活跃主机，智能探测同一子网中的活跃主机，对于远程网络，可以使用更为强大的Nmap扫描器进行探测
+      * udp_sweep通过发送UDP数据包探查指定主机是否活跃，并发现主机上的UDP服务
+    * 使用Nmap进行主机探测
+      * 目标网络哪些主机存活，哪些服务开放，甚至知道网络中使用了何种防火墙设备等
+      * 不使用任何选项下，Nmap会使用与Ping命令一样的机制，向目标网络发送ICMP的echo请求，同时会测试目标系统的80和443端口是否打开
+      * 如果是在Internet环境中，Ping扫描发送的ICMP数据包通常无法穿透Internet上的网络边界（通常是被防火墙设备过滤了）
+      * `nmap -sn 10.10.10.0/24` 仅探测存活主机，不对开放的TCP端口进行扫描
+      * `nmap -PU 10.10.10.0/24` 通过对开放的UDP端口进行探测以确定存活的主机，类似udp_sweep辅助模块
+
+  * 操作系统辨识
+
+    * 使用`-O`选项让Nmap对目标操作系统进行识别
+    * `nmap -A`可以获取更详细的服务和操作系统信息
+
+  * 端口扫描与服务类型探测
+
+    * 常见的端口扫描技术有以下几类
+
+      1. TCP Connect 结果最精确，速度最慢，也会被扫描主机记录到日志，容易暴露
+      2. TCP SYN 利用了TCP协议栈的一些特性，更加快速隐蔽
+      3. TCP ACK 同上
+      4. TCP FIN 同上
+      5. TCP IDLE (more advanced)
+
+    * Metasploit中的端口扫描器
+
+      * `search portscan`
+      * ack: 通过ACK扫描的方式对防火墙上未被屏蔽的端口进行探测
+      * ftpbounce: 通过FTP bounce攻击的原理对TCP服务进行枚举，一些新的FTP服务器软件能很好防范该攻击，但一些旧的Solaris及FreeBSD系统的FTP服务中此类攻击方式仍能够被利用
+      * **syn**: 使用发送TCP SYN标志的方式探测开放的端口，一般推荐：因其扫描速度较快、结果准确且不容易被对方察觉
+      * tcp: 使用完整的tcp连接，最准确，但速度较慢
+      * xmas: 一种更为隐秘的扫描方式，通过发送FIN、PSH和URG标志，能够躲避一些高级的TCP标记监测器的过滤
+
+    * Nmap的端口扫描功能
+
+      * 大部分扫描器会对所有的端口分为open或close两种类型，而Nmap对端口状态的分析粒度更加细致
+      * open、closed、filtered、unfiltered、open|filtered、closed|filtered
+
+      1. open: 一个应用程序正在此端口上进行监听，以接收来自TCP、UDP或SCTP协议的数据
+      2. closed: 关闭的端口指的是**主机已响应**，但没有应用程序监听的端口
+      3. filtered: 指Nmap不能确认端口是否开放，但根据响应数据猜测该端口可能被防火墙等设备过滤
+      4. unfiltered: 仅在使用ACK扫描时，Nmap无法确定端口是否开放，会归为此类，可使用其它类型扫描（如Window扫描，SYN扫描，FIN扫描）进一步确认端口的信息
+
+    * 使用Nmap探测更详细的服务信息
+
+      * `nmap -sV -Pn 10.10.10.129`
+
+  * Back Track 5 的 Autoscan 功能
+
+  * 探测扫描结果分析
+
+  * <table>
+        <thead>
+          <tr>
+            <th>主机</th>
+            <th>操作系统</th>
+            <th>主要的开放端口</th>
+            <th>对应服务版本</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="7">网站服务器(10.10.10.129)</td>
+            <td rowspan="7">Linux 2.6.X(Ubuntu)</td>
+            <td>SSH(22)</td>
+            <td>OpenSSH 5.3p1</td>
+          </tr>
+          <tr>
+            <td>HTTP(80)</td>
+            <td>Apache httpd 2.2.14</td>
+          </tr>
+          <tr>
+            <td>netbios-ssn(139)</td>
+            <td>Samba smbd3.X</td>
+          </tr>
+          <tr>
+            <td>Imap(143)</td>
+            <td>Courier Imapd(released 2008)</td>
+          </tr>
+          <tr>
+            <td>netbios-ssn(445)</td>
+            <td>Samba smbd3.X</td>
+          </tr>
+          <tr>
+            <td>commplex-link(5001)</td>
+            <td>Oracle VM Manager</td>
+          </tr>
+          <tr>
+            <td>HTTP(8080)</td>
+            <td>Apache Tomcat/Coyte JSP engine 1.1</td>
+          </tr>
+          <tr>
+            <td rowspan="15">后台服务器(10.10.10.130)</td>
+            <td rowspan="15">Microsoft Windows XP|2003</td>
+            <td>FTP(21)</td>
+            <td>Microsoft ftpd</td>
+          </tr>
+          <tr>
+            <td>HTTP(80)</td>
+            <td>Microsoft IIS httpd 6.0</td>
+          </tr>
+          <tr>
+            <td>MSRPC(135)</td>
+            <td>Microsoft Windows RPC</td>
+          </tr>
+          <tr>
+            <td>netbios-ssn(139)</td>
+            <td>空</td>
+          </tr>
+          <tr>
+            <td>Microsoft-ds(445)</td>
+            <td>Microsoft Windows 2003 or 2008 microsoft-ds</td>
+          </tr>
+          <tr>
+            <td>multiling-http(777)</td>
+            <td>未知</td>
+          </tr>
+          <tr>
+            <td>MSRPC(1025)</td>
+            <td>Microsoft Windows RPC</td>
+          </tr>
+          <tr>
+            <td>MSRPC(1026)</td>
+            <td>Microsoft Windows RPC</td>
+          </tr>
+          <tr>
+            <td>MSRPC(1027)</td>
+            <td>Microsoft Windows RPC</td>
+          </tr>
+          <tr>
+            <td>MSRPC(1031)</td>
+            <td>Microsoft Windows RPC</td>
+          </tr>
+          <tr>
+            <td>oracle-tns(1521)</td>
+            <td>Oracle TNS Listener 10.2.0.1.0(for 32-bit Windows)</td>
+          </tr>
+          <tr>
+            <td>HTTP(6002)</td>
+            <td>SafeNet Sentinel License Monitor httpd 7.3</td>
+          </tr>
+          <tr>
+            <td>afs3-callback(7001)</td>
+            <td>未知</td>
+          </tr>
+          <tr>
+            <td>HTTP(7002)</td>
+            <td>SafeNet Sentinel Keys License Monitor httpd 1.0(Java Console)</td>
+          </tr>
+          <tr>
+            <td>HTTP(8099)</td>
+            <td>Microsoft IIS httpd 6.0</td>
+          </tr>
+          <tr>
+            <td rowspan="8">网关服务器(10.10.10.254)</td>
+            <td rowspan="8">Unix, Linux</td>
+            <td>FTP(21)</td>
+            <td>vsftpd 2.2.2</td>
+          </tr>
+          <tr>
+            <td>SSH(22)</td>
+            <td>OpenSSH 5.3p1</td>
+          </tr>
+          <tr>
+            <td>HTTP(80)</td>
+            <td>Apache httpd 2.2.14</td>
+          </tr>
+          <tr>
+            <td>netbios-ssn(139)</td>
+            <td>Samba smbd3.X</td>
+          </tr>
+          <tr>
+            <td>Imap(143)</td>
+            <td>Courier Imapd(released 2008)</td>
+          </tr>
+          <tr>
+            <td>netbios-ssn(445)</td>
+            <td>Samba smbd3.X</td>
+          </tr>
+          <tr>
+            <td>ovm-manager(5001)</td>
+            <td>Oracle VM Manager</td>
+          </tr>
+          <tr>
+            <td>HTTP(8080)</td>
+            <td>Apache Tomcat/Coyte JSP engine 1.1</td>
+          </tr>
+        </tbody>
+      </table>
+
 * 服务扫描与查点
 
-* 网络漏洞扫描
+  * 确定开放端口后，通常会对相应端口上所运行服务的信息进行更深入的挖掘，通常称为**服务查点**
+  * Metasploit的Scanner辅助模块中，有很多用于服务扫描和查点的工具，**常**以`[service_name]_version`和`[service_name]_login`命名
+    * `[service_name]_version`可用于遍历网络中包含了某种服务的主机，并进一步确定服务的版本
+    * `[service_name]_login`可对某种服务进行口令探测攻击
+    * 例如，`http_version`可用于查找网络中的web服务器，并确定服务器的版本号，`http_login`可用于对需要身份认证的http协议应用进行口令探测
+
+  1. 常见的网络服务扫描
+     * Telnet服务扫描
+       * 历史悠久但先天缺乏安全性，渐渐被SSH协议代替
+       * 价格昂贵、使用寿命更长的大型交换机仍可能使用，而此类交换机在网络中的位置一般来说都非常重要
+       * 渗透进入一个网络时，不妨扫描一下是否有主机或设备开启了Telnet服务，为下一步进行网络嗅探或口令猜测做好准备
+       * `auxiliary/scanner/telnet/telnet_version`
+     * SSH服务扫描
+       * 如果没有做其他的安全增强配置（如限制管理员登录的IP地址），只要获取服务器的登录口令，就可以使用SSH客户端登录服务器
+       * `auxiliaty/scanner/ssh/ssh_version`
+     * Oracle数据库服务查点
+       * `auxiliary/scanner/oracle/tnslsnr_version`
+       * `mssql_ping` 模块查找网络中的Microsoft SQL Server
+     * 开放代理探测与利用
+       * 隐藏网络身份的技术有很多，使用代理服务器(Proxy)、VPN等，但最简单和最常见的还是使用代理服务器
+       * Metasploit提供了open_proxy模块，能更加方便地获取免费的HTTP代理服务器地址
+       * 比开放代理更保险的隐藏攻击源方法是利用开放的或者自主架设的VPN服务
+       * 使用这些VPN可以采用加密方式转发路由你的渗透测试数据包，而无需单行你的攻击发起源被跟踪到
+       * ？Proxy & VPN: difference
+  2. 口令猜测与嗅探
+     * SSH服务口令猜测
+       * `auxiliary/scanner/ssh/ssh_login`
+     * psnuffle口令嗅探
+       * 是目前Metasploit中唯一用于口令嗅探的工具，功能不算强大，但非常实用
+       * 实际渗透测试过程中，只有在得到能够接入对方网络的初识访问点之后，才能够方便地实用Metasploit中的psnuffle模块进行口令嗅探
+       * 如果条件允许的话，推荐在接入网络整个过程中都要保持嗅探器的运行，以增加截获口令的可能性
+       * `auxiliary/sniffer/psnuffle`
+
+* 网络漏洞扫描（通过开放服务的漏洞利用，取得服务器的控制权）
+
+  * 漏洞扫描原理与漏洞扫描器
+    * **网络漏洞扫描**指的是利用一些自动化的工具来发现网络上各类主机设备的安全漏洞。这些自动化的工具通常被称为**漏洞扫描器**
+    * 分**黑盒**扫描与**白盒**扫描
+    * 漏洞扫描器一般会附带一个用于识别主机漏洞的**特征库**，并定期对特征库进行更新
+  * OpenVAS漏洞扫描器
+    * 类似Nessus的综合型漏洞扫描器
+    * Nessus曾经是业内开源漏洞扫描工具的标准，在其商业化不再开放源代码后，它的原始项目中分支出OpenVAS开源项目
+    * OpenVAS已成为当前最好用的开源漏洞扫描工具
+    * 使用NVT（Network Vulnerability Test）脚本对多种远程系统（Windows、Linux、Unix以及Web程序等）的安全问题进行检测
+    * 开发维护一套免费的NVT库
+  * 查找特定服务漏洞
+  * 漏洞扫描结果分析
+
+* 渗透测试信息数据库与共享
+
+  * 使用渗透测试信息数据库的有事
+  * Metasploit的数据库支持
+  * 在
