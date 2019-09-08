@@ -257,4 +257,53 @@
 
 ## CH05 Commands
 
+* `[count] {operator} {[count] motion|text object}`
+* Operators
+  * `~` swap character casing
+  * `s` substitute a character, delete a character and put you in insertion
+  * `S` substitute the whole line, delete the line, and put you in insertion
+  * `D` `d$`
+  * `gx` opens the URL under your cursor in a web browser
+  * `p` pastes after
+  * `P` pastes before
+* Motions
+  * `g_`和`$`，the former excludes trailing spaces
+  * `%` moves cursor to the matching bracket (or parenthesis)
+  * `(` previous sentence
+  * `{` start of a paragraph
+  * `[{` outer `{`
+  * `]}` outer `}`
+  * `[(` `])` similar as above
+  * `:%d`
+  * `:0,.d`
+  * `:{n}`
+  * `{n}gg` `{n}G`
+* Operators that require a motion
+  * `v`
+  * `V` select the entire line
+  * `gu`
+  * `gU`
+* Command Inversion
+  * `i` `I` `a` `A`
+  * `f` `F`
+  * `r` `R`
+* Cursor Movment
+  * `hjkl`
+* Page Movment
+  * `<C-u>` `<C-d>`
+  * `<C-b>` `<C-f>`
+  * `zz` `zt` `zb`
+  * `H` `L` `M`
+  * `set scrolloff = {n}`
+* Text Objects
+  * words, sentences, paragraphs, and tags
+  * Word`w` 
+  * Sentence`s` 
+  * Paragraph`p` 
+  * Tag`t` 
+  * Quote "|'|`
+  * Block `{}|[]|()|<>`
+* Executing Commands Within INSERT Mode
+  * `<C-o>`
+
 ## CH06 Registers
