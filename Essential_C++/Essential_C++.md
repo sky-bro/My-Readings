@@ -523,21 +523,168 @@
 ## 第5章 面对对象编程风格
 
 * `is-a-kind-of` 与 `are-a-kind-of`：`object-based` 与 `object-oriented`
+
 * 面向对象编程概念
   * 最主要特质是：继承和多态
     * 继承：父类定义了所有子类共通的接口和私有实现（基类base class、派生类derived class、抽象基类abstract base class）
-    * 多态：基类的pointer或reference得以十分透明地指向其任何一个派生类对象
-    * 动态绑定：静态绑定是我们在写`mat.check_in();`**编译时**就知道调用的check_in是哪个函数，动态绑定就是我们无法确定调用是哪个函数，这个解析操作会延迟到**运行时**
+    * **多态**：基类的pointer或reference得以十分透明地指向其任何一个派生类对象
+    * **动态绑定**：静态绑定是我们在写`mat.check_in();`**编译时**就知道调用的check_in是哪个函数，动态绑定就是我们无法确定调用是哪个函数，这个解析操作会延迟到**运行时**
+  
 * 漫游：面向对象编程思维
+
+  * 在调用constructor创建对象时，首先调用父类constructor，再调用子类的
+  * 在调用deconstructor删除对象时，首先调用子类deconstructor，再调用父类的
+  * 声明为protected的所有成员都可以被派生类直接访问
+
 * 不带继承的多态
-* 定义一个抽象基类
+
+  * 费功夫、难维护
+
+* 定义一个抽象基类：重新设计num_sequence class
+  
+  1. 找出所有子类共通的操作行为
+  
+  2. 找出与类型相关的操作行为：设为虚函数
+  3. 确定每个操作行为的访问层级access level
+     * public
+     * private
+     * protected
+  
+  * 将虚函数赋值为0，它便成了一个纯虚函数
   * 任何类如果有一个（或多个）纯虚函数，那么，由于其接口的不完整性（纯虚函数没有函数定义），程序无法为它产生任何对象
+  * static member function不能声明为虚函数
+  * 根据一般规则，凡基类定义有一个或多个虚函数，应该要将其destructor声明为virtual
+  * 最好不要将virtual deconstructor设为纯虚函数
+  
 * 定义一个派生类
+
+  * ```c++
+    #include "num_sequence.h"
+    
+    class Fibonacci: public num_sequence {
+    public:
+        Fibonacci(int len=1, int beg_pos=1)
+            : _length(len), _beg_pos(beg_pos){}
+        
+        virtual int elem(int pos) const;
+        virtual const char* what_am_i() const {return "Fibonacci"; }
+        virtual ostream& print(ostream &os = cout) const;
+        int length() const {return _length;}
+        int beg_pos() const {return _beg_pos;}
+        
+    protected:
+        virtual void gen_elems(int pos) const;
+        int _length;
+        int _beg_pos;
+        static vector<int> _elems;
+    };
+    ```
+
+  * 类进行继承声明之前，其基类的定义必须已经存在
+
+  * 每当派生类有某个member与其基类的member同名，便会遮掩住基类的那份member，如果要使用继承来的那份member，必须利用class scope运算符加以限定
+
+  * 一般而言，在基类和派生类中提供同名的non-virtual函数，并不是好的解决办法（在通过父类指针调用时，无法使用子类的重载，一直使用父类的）
+
+  * ```c++
+    class A {
+      public:
+      void print() const{
+        cout<<"hello A"<<endl;
+      }
+    };
+    
+    class B: public A {
+      public:
+      void print() const{
+        cout<<"hello B"<<endl;
+      }
+    };
+    
+    void f(const A &a) {
+      a.print(); // This will always print "hello A", because print() in class A is not "virtual"
+    }
+    ```
+
 * 运用继承体系
+
 * 基类应该多么抽象
+
+  * reference永远无法代表空对象，pointer却有可能是null，让它成为reference，我们就再也不必检查它是否为null了
+    * Data member如果是一个reference，必须在constructor的member initialization list中加以初始化。一旦初始化，就再也无法指向另一个对象
+    * 如果data member是个pointer，就无此限制
+    * 程序设计过程中我们便是根据这些不同的性质来决定要使用reference或pointer
+
 * 初始化、析构、复制
+
 * 在派生类中定义一个虚函数
-* 运行时的鉴定机制
+
+  * 虚函数的静态解析
+
+    * 有两种情况，虚函数机制不会出现预期行为：
+
+      1. 基类的constructor和deconstructor内
+      2. 当我们使用的是基类的对象，而非基类对象的pointer或reference时
+
+    * ```c++
+      void print(LibMat object, const LibMat *pointer, const LibMat &reference) {
+      	// 以下必定调用LibMat::print()
+          object.print();
+          
+          // 以下一定会通过虚函数机制来进行解析，我们无法预知哪一份print会被调用
+          pointer->print();
+          reference.print();
+      }
+      ```
+
+    * 
+
+* 运行时的类型鉴定机制 (**RTTI** Run-Time Type Identification)
+
+  * what_am_i()函数，通过每个继承类都提供该方法实现，如果只在基类提供该方法行不行呢？
+
+    * 一种是在基类构造函数传入类名
+
+    * 另一种
+
+      * ```c++
+        #include <typeinfo>
+        
+        inline const char* num_sequence::what_am_i() const
+        {
+            return typeid(*this).name();
+        }
+        ```
+
+  * 上面的`typeid(*this)`会返回一个type_info对象，支持相等和不等两个比较操作
+
+    * 比如下面代码可以判断ps是否指向Fibonacci对象
+
+    * ```c++
+      num_sequence *ps = &fib;
+      
+      if (typeid(*ps) == typeid(Fibonacci))
+          // ok, ps的确指向某个Fibonacci对象
+      ```
+
+  * 在知道实际指向的是Fibonacci对象后，我们可以将指针强转为Fibonacci指针，就可以调用其特有的函数了，说下下面两种方式
+
+    * ```c++
+      if (typeid(*ps) == typeid(Fibonacci))
+      {
+          Fibonacci *pf = static_cast<Fibonacci*>(ps); // 无条件转换
+          pf->gen_elems(64);
+      }
+      ```
+
+    * ```c++
+      if (Fibonacci *pf = dynamic_cast<Fibonacci*>(ps))
+          pf->gen_elems(64);
+      ```
+
+    * static_cast其实有潜在危险，因为编译器无法确认我们所进行的转换操作是否完全正确。（所以我们把它安排在typeid结果比较为真的条件下）
+
+    * dynamic_cast运算符就不同，它提供有条件的转换，它会进行运行时检验操作，检验ps所指对象是否属于Fibonacci类。如果是，转换便会发生，pf指向该Fibonacci对象；如果不是，dynamic_cast运算符返回0
 
 ## 第6章 以template进行编程
 
