@@ -138,7 +138,9 @@
 
 ## 综合写作
 
-* 
+* 题目
+  
+  
   1. 读一篇230-300词的文章（3m），记笔记（**做好阅读笔记、带问题找答案**）
      * 首段，找出主题+找出态度
      * 第二段，确定第一个要点（记重要细节）
@@ -151,7 +153,7 @@
      * 第四段，抨击要点3（细节就是分数）
   3. 写一篇150-225词的作文（20m），阅读文章再次出现 -- 写200词左右就行
   
-* 
+* 模板
   
   1. In the lecture, the professor casts doubt on the reading passage's idea that 阅读材料态度. The professor asserts that 听力材料态度
   
@@ -168,11 +170,13 @@
 
 * 
 
-  1. In the lecture, the professor casts doubt on the reading passage's idea that reintroducing of gray wolves into the wild is harmful to the ecosystem. The professor asserts that the arguments in the reading passage are not convncing.
-2. Firstly, contrary to the belief in the passage that the increasing number of wolves in the wild could threaten the elk population, which is very important to the ecosystem, the professor asserts that wolves help keep ecological balance, because they hunt elk to the extent that the stability of the ecosystem is well maintained.
-  3. Secondly, the author of the passage points out that the wolves wild could be detrimental to the local  farm economy, because domesticated animals like cattle and sheep make for tasty food for wolves, while the lecture notes that if the government subsidizes ranchers who lose sheep and cows due to the attack of wolves, their income and local economic development would not be affected.
-  4. Lastly, opposing the author's belief that the locals would fear wolves because it is said that in some states, children were attacked or sometimes even killed by wolves, the professor contends that the local do not fear wolves because they have gotten used to the species and the wolves only attack human beings when they are threatened.
+  1. In the lecture, the professor casts doubt on the reading passage's idea that reintroducing of gray wolves into the wild is harmful to the ecosystem. The professor asserts that the arguments in the reading passage are not convincing.
 
+  2. Firstly, contrary to the belief in the passage that the increasing number of wolves in the wild could threaten the elk population, which is very important to the ecosystem, the professor asserts that wolves help keep ecological balance, because they hunt elk to the extent that the stability of the ecosystem is well maintained.
+
+  3. Secondly, the author of the passage points out that the wolves wild could be detrimental to the local  farm economy, because domesticated animals like cattle and sheep make for tasty food for wolves, while the lecture notes that if the government subsidizes ranchers who lose sheep and cows due to the attack of wolves, their income and local economic development would not be affected.
+
+  4. Lastly, opposing the author's belief that the locals would fear wolves because it is said that in some states, children were attacked or sometimes even killed by wolves, the professor contends that the local do not fear wolves because they have gotten used to the species and the wolves only attack human beings when they are threatened.
 ## 三选一题型（少）
 
 ###  写法1，ABC都探讨
@@ -194,3 +198,27 @@
   3. <span style="background: yellow;">Moreover</span>, a friend would relieve your loneliness when you are traveling, If you travel to somewhere alone, you will not have anyone to talk to. You can read books or listen to music on an MP3 player, but no one would share your happiness during your journey. If you are accompanied by a friend, s/he can take your picture at beautiful scenic spots or other interesting tourist attractions. You can share your photos with each other and talk about the interesting things that happen around you. You may also eat together while having a nice conversation at a local restaurant. With a friend, traveling becomes more interesting and meaningful and we are no longer lonely.
   4. <span style="background: yellow;">Most important of all</span>, a friend can assist you when you are traveling somewhere. We might meet something unfamiliar when we travel. For instance, we might get lost, and a friend who has a great sense of direction could help us find our way. The company of a friend can also relieve fear and stress. Problems may come, but at least you can solve your problems together.
   5. <span style="background: yellow;">In conclusion</span>, traveling with a friend is essential because he or she will share your happiness, help you maintain peace of mind, and provide assistance when you are in trouble. Thus, I think a good friend is more important than other things when I travel on vacation.
+
+# 段落展开
+
+## 例证法
+
+* 例证法四要素
+  1. 主题句
+  2. 解释(讲道理)
+  3. 举例(摆证据)
+     * 实际/编造 案例（过去）
+     * 假设案例（未来）
+     * 不一定非得用经典例子
+     * 不一定非得用名人，人名
+  4. 例子含义的总结
+* s
+  * 【主题句】To begin with, there is no denying that movies and TV programs produced in one's own country are closer to his daily life and easier to understand. 【解释】The setting of background and plots, and the design of actor's lines all **comply with** the native customs, values and concepts. 【举例】For instance, in some comedies, the laughing points are often hidden in the local dialects or slang that could only be comprehended by the natives. It is difficult for the foreigners to grasp the central meaning, not to mention the subtexts. 【例子含义总结】All these potential factors are combined together to make the movie not as interesting as it is supposed to be in the eyes of a foreign audience.
+* s
+  * 【主题句】First of all, managing money makes children realize the importance of thrift. 【解释】Saving money is a good habit that needs to be formed at an early age. If children are instructed to save their allowances, they may naturally wonder about the reason to do so. After learning the fact that money is earned through the hard work of their parents, they will no longer waste money on purpose from then on. It paves the way for them to become rational consumers and intelligent investors in the future. 【举例】For instance, I still have a little piggy bank by my side. It is a gift from my uncle, In my childhood, I used to put all my pocket coins into it. With the passing of time, such a habit continues and is to be continued.【例子含义总结】After all, frugality is an essential quality in a financially responsible adult.
+* s
+  * 【主题句】Obviously, this measure is destined to reduce car use at peak times. 【解释】For fear of being fined or losing money, people may deliberately avoid driving to work. Paying fees proves to be the most effective way to manipulate people's personal behavior in public, as it is in line with people's general psychological state.【举例】Such an adoption is actually not unique to a single nation. For instance, traffic jam fees were introduced in Singapore in 1975. Since then, Sweden, Britain, Norway, Italy, and China have followed suit. 【例子子含义总结】Due to the measures implemented, the traffic volumes were brought down by between 10 to 20 percent.
+* s
+  * First of all, taking good care of others is a primary step to become a responsible individual. Just like a baby who lives under the endless care from its mother, an animal also relies largely on the affectionate care from its owner. If a child has been given the chance to play the role of a little mother, she would have a further comprehension about what love and care really mean. She may be determined to render the greatest care to her pet and try to make it healthier and stronger. In fact such a psychological feedback is helpful to children's mental growth and prepares them for greater responsibilities.
+
+## 法
