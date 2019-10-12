@@ -87,6 +87,12 @@
 * **subsequent**
 * **Evidently**, these **unprecedented** achievements **owed** much **to** Curie's **untiring** efforts at school.
 * The participation in any project requires the **united efforts** of all group members. During the course of a group task, each one has to work together with their partners. Just like different components of an engine, everyone is **interrelated**. If a single part **refuses to function**, the whole engine may suddenly stop or even break down. <span style= "color: red">It is such a dramatic effect that **depicts the  value** of working harmoniously.</span>
+* The government should encourage companies to **invest in** exploiting renewable energy.
+* Every citizen should **be involved in** environmental protection
+* The government should **give top priority to** meeting people's basic needs, such as housing and medical care.
+* Children may **be more vulnerable to** offensive images on the media than adults.
+* Parents can not **be indifferent to** children's leisure activities.
+* 
 
 ## 对比类题型 40%
 
@@ -177,6 +183,13 @@
   3. Secondly, the author of the passage points out that the wolves wild could be detrimental to the local  farm economy, because domesticated animals like cattle and sheep make for tasty food for wolves, while the lecture notes that if the government subsidizes ranchers who lose sheep and cows due to the attack of wolves, their income and local economic development would not be affected.
 
   4. Lastly, opposing the author's belief that the locals would fear wolves because it is said that in some states, children were attacked or sometimes even killed by wolves, the professor contends that the local do not fear wolves because they have gotten used to the species and the wolves only attack human beings when they are threatened.
+
+* s
+
+  1. In the lecture, the professor casts doubt on the reading passage's idea that grave found in the north-east of England belongs to King Raedwald. The professor asserts that the grave is not necessarily King Raedwald's.
+  2. Firstly, contrary to the belief in the passage that the occupant of the grave is very likely to be King Raedwald since a pair of spoons identified by archaeological technology indicated its date around A.D. 620, while King Raedwald died in A.D. 624, the professor asserts that the technology might not be reliable. The spoons have also been dated to twenty-five years after the king died and the date of the King's death is not exactly accurate. 
+  3. Secondly, the author of the passage points out that the spoons engraved with the names of two Catholic missionaries indicated that they might be gifts to Raedwald, because the king converted to Catholicism, while the lecture notes that the spoons engraved with two missionaries' names might be gifts to  anybody who converted to Catholicism, and not necessarily King Raedwald.
+  4. Lastly, opposing the author's belief that the grave is luxurious while the north-east of England at that time was poor, so its occupant must be a king, the professor contends that the luxurious grave simply might not be the king's, Perhaps there used to be other rich noblemen buried in such a grave.
 ## 三选一题型（少）
 
 ###  写法1，ABC都探讨
@@ -221,4 +234,23 @@
 * s
   * First of all, taking good care of others is a primary step to become a responsible individual. Just like a baby who lives under the endless care from its mother, an animal also relies largely on the affectionate care from its owner. If a child has been given the chance to play the role of a little mother, she would have a further comprehension about what love and care really mean. She may be determined to render the greatest care to her pet and try to make it healthier and stronger. In fact such a psychological feedback is helpful to children's mental growth and prepares them for greater responsibilities.
 
-## 法
+## 因果推论法
+
+* 四要素
+  1. 主题句
+  2. 条件
+  3. 结果
+  4. 影响
+* s
+  * 【主题句】Stress stems from the fierce competition among colleagues. 【条件】If every person aspires to success, 【结果】then this very desire will push people to scramble for limited positions and resources at all costs, 【影响】thus creating intense pressure on everyone.
+  * 【主题句】Watching TV too much tends to have an unfavorable influence on the family relationship, 【条件】by which I mean if one spends the vast majority of his spare time on television, 【结果】he will lack sufficient time for communication with the family members, 【影响】which may possibly result in the alienation in the family. 
+  * 【主题句】However, awareness ought to be aroused to avoid the phenomenon of filling a post without real qualifications. 【条件】If equal grade is given to all group members, 【结果】there is a hidden possibility that certain members might refuse to contribute wholeheartedly. Just as what is depicted in the famous Chinese fable, some players might pretend to make contributions in disguise. 【影响】Such dishonest behavior is also destructive to the quality of a group and must be strictly avoided.
+
+## 对比论证法
+
+* 三大技巧
+  1. 与反面事物对比
+  2. 时间对比
+  3. 假设对比
+* 积累
+  * By contrast
