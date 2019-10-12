@@ -207,9 +207,69 @@ If you want to go fast, go alone, if you want to go far, go together.
 ### Task 4
 
 * 题目
+  1. read one passage: 75~100 words, 45/50s (学术名词，介绍一个概念)
+  2. listen to one lecture: 1 professor, 60~80s (1+1：一个学术概念+一个具体案例(长))
+  3. preparation: 30s (解释示例如何阐明是这个概念的)
+  4. response: 60s
 * Template （模板）
+  * In the lecture, the professor gives one example to illustrate （阅读中的题目/题干）. **or** 【—— means ——】（学术名词定义，高分说定义）
+  * （剩45s）——. Then, ——
+  * （剩20s）However/But, —— 转折点
+  * （剩10s）After all/ In the end/ Finally/ So, ——结论
+* 笔记
+  * 时间+事件
+* 例子Procedural Memory
+  * Procedural memory is a specific memory of how to learn a new task. After practicing something many times, people will never forget how to do it, and it becomes a sort of permanent memory.
+  * In the listening portion, the professor says that he used to play guitar when he was very young. His teacher taught him how to place his fingers and how to hold a guitar. After he learned it, he played every day at home for many hours. But then he went to college, and he didn't play it for a long time. One day after college, he picked up the guitar and he tried playing it again. Surprisingly he still knew how to play guitar in a perfect way. Although he couldn't explain how or why he could play it, he still can play his favorite songs.
+  * And this shows how procedural memory forms.
+* 例子Groupthinking
+  * The professor in the lecture uses his personal experience in a computer company to illustrate groupthink.
+  * Once he and his co-worker suggested  to give their computer a design make-over to look cooler in order to attract new customers. At first, the majority supported their suggestion. But there were a few senior managers who didn't support. Then some supporters changed their mind, so did the professor's co-worker, because they didn't want to make a bad impression on senior managers. Then afterwards, the professor himself thought he was the one delaying the decision. Then, he voted against himself. So they all agreed not to have this design change.
+  * At last, the company lost profit because its competitors came up with good-looking computers and won more customers. This shows how bad decision is made by groupthink.
+* 例子Heart Valve Replacement
+  * In this lecture, the professor talks about two different kinds of heart valves.
+  * One type of heart valves is called the porcine valve. It's made from a pig, because pig valves are natural and easy to be adapted by the human body. After surgery, patients need little treatment. However, this kind of valve doesn't last more than a decade. This makes it an ideal choice for elderly patients.
+  * The other heart valve option is an artificial one, which is made of plastic and metal. These valves can last much longer than pig valves. Unfortunately, they can also cause blood clots. For this reason, patients have to take medication continuously after the surgery. Because the medication is hard for the body to handle, artificial heart valves are more suitable for younger patients.
+  * In summary, artificial heart valves are more suitable for younger patients while pig valves are preferable for older ones.
+
+### Task 5
+
 * s
-  * 
+* Template
+  1. The woman/man expresses her/his problem that ----(Problem)
+  2. Firstly, the man/woman suggests she/he should ---(Solution 1)
+  3. The second suggestion is ---(Solution 2)
+  4. （剩25s）Personally, I think the 1st/2st suggestion is better, because -- (Reason 1). / Furthermore, (Reason 2). / Also, (自己解释)
+
+### Task 6
+
+* 题型
+  * listen to one lecture: 1 professor, 90-120s
+  * preparation: 20s
+  * response: 60s
+* Template
+  * ---主论点（There are two aspects/disadvantages/methods/ways of...）
+  * First, ---1st分论. For example, ---1st案例
+  * （剩25s）Second, ---2nd分论. For instance, ---2nd案例
+* s
+  * There are two disadvantages for animals who live in groups.
+  * The first one is that they are more visible to predators. Take sardines for an example. Sardines swim in groups, and whales eat them. However, sardines do not swim individually. Therefore, when they swim in groups, it's more easily for whales to spot them.
+  * The second example is about bats. It shows that it's hard for moms to care for youngs. Bats live in caves, and moms will go out to find food. But after they come back with food, it's usually difficult for moms to identify their own children. As a result, they sometimes probably end up giving their own food to other bats' children. And then their own children will be starving and will not be fed.
+* s
+  * In the lecture the professor describes how scientists learn about baby's mathematical abilities.
+  * Researchers did an experiment to test baby's ability to add that baby knows one plus one equals two. They first put a doll in front of a baby and lowered the screen to hide the doll. So the baby knows it's there. Then they clearly put another doll behind the screen so there should be two dolls. But researchers secretly took one away and when they lift the screen up, the baby was surprised because it expected to see two dolls but there was only one. We know when a baby is surprised, it stares at the thing that makes it feel surprised. The researchers recorded the baby's eye-movement with a camera and found that the baby stared. So the baby has the ability to add. It knows one doll plus one doll equals two dolls.
+* s
+  * The professor talks about two kinds of persuasive strategies in advertising.
+  * The first strategy is repetition. When a slogan is repeated enough times, we tend to believe what the slogan says. The example is a cr commercial. A guy is driving around and keeps stopping to pick up different people, each time a narrator says "Plenty of rooms for friends", "Plenty of room for family" and so on. If we hear the slogan so many times, we tend to believe the car is spacious even if it's not.
+  * The second strategy is using celebrities. We believe celebrities are trustworthy. For example, in a car commercial, if a famous race-car driver is shown in a car and says "I like my car fast", people will believe the car is fast even if it's actually not a very fast car.
+* s
+  * In the lecture, the professor says in order for art to express meaning or emotion, artists need to combine various visual elements such as color and texture.
+  * Different colors can evoke different mood. Red is a strong color so it evokes strong emotions such as extreme joy, excitement and anger, whereas blue is a cool color so it evokes calming effect.
+  * As for texture, a rough texture can evoke strong emotions and strength, while a smooth texture is more calming and less emotional. Artists need to combine these elements to express meaning or convey message. For example, if a painting uses strong colors such as red and orange and uses brush strokes to give a rough texture, it will convey a wilder and more chaotic emotion in a viewer than a painting with soft colors and smooth texture.
+* s
+  * In the lecture, the professor talks about two types of motivation: extrinsic motivation and intrinsic motivation. Extrinsic motivation is external.
+  * A person with extrinsic motivation performs a behavior in order to get an external reward. For example, a child who does some housework doesn't really enjoy doing housework. She just wants to obtain some money. If her parents stop giving her money, she might stop doing the housework.
+  * However, people with intrinsic motivation do something out of pure pleasure. They do something because they enjoy dong it or they get a sense of accomplishment from it. For example, the professor goes to the gym several times week. She is not going there for marathon training or anything. She goes there because after some exercise she feels good about herself.
 
 ## 独立题八大万能理由
 
