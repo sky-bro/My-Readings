@@ -73,11 +73,57 @@ docker command line structure
   * `docker network connect <net> <container>` -- attach a network to container
   * `docker network disconnect` -- detach a network from container
   * `docker container run --network <net> --name nginx -d nginx`
+  
 * Docker Networks: DNS
   * use `--link` to enable DNS on default bridge network (create net network would be easier)
   * containers shouldn't rely on IP's for inter-communication
   * DNS for friendly names is built-in if you use custom networks
+  
 * DNS Round Robin Test
   * use `--network-alias <alias>` 
   * `docker container run --rm --net dude --net-alias search elasticsearch:2`, run this two times
   * `docker container exec -it ubuntu curl search:9200`
+  
+* What's In An Image (And What Is Image)
+  * App binaries and dependencies
+  * Metadata about the image data and how to run the image
+  * Not a complete OS. No kernel, kernel modules (e.g. drivers)
+  * Small as one file (your app binary) like a golang static binary
+  * Big as a Ubuntu distro with apt, and Apache, PHP, and more installed
+
+* Docker Image
+  * `docker  image history [image]`
+  * images are made up of file system changes and metadata
+  * each layer is uniquely identified and only stored once on a host
+  * this saves storage space on host and transfer time on push/pull
+  * A container is just a single read/write layer on top of image
+  * container copies on write
+  * `docker image inspect [nginx]`
+  
+* Image Tagging and Pushing to Docker Hub
+  * `docker login <server>` `docker logout` -- login to server, the default is docker hub
+  * `echo [base64-encoded] | base64 -d`
+  * `docker image push skybro/nginx`
+  * if you want to create a private docker hub image, you should create the repository first before you upload it
+  
+* Building Images
+
+  * `docker image build -t customnginx .`
+  * [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+* Container lifetime & Persistent Data
+
+  * Data Volumes
+    * make special location outside of container UFS
+    * attach to containers
+    * need manual deletion
+    * `docker volume prune`
+    * `docker volume ls`
+    * `docker volume inspect <volume>`
+    * `docker container run -v mysql-db:/var/lib/mysql mysql`: a named volume
+    * `docker  volume create [options] [volume]`
+  * Bind Mounts
+    * link container path to host path
+    * `docker container run -v $(pwd):/usr/share/nginx/html nginx`: like volume, but with a `/` at front
+
+* 48
