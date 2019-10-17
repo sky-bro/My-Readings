@@ -434,4 +434,43 @@
     exec < $terminal
     ```
 
-*  
+* select
+
+* repeat
+
+* break
+
+* continue
+
+* command chaining
+
+  *  `ls ; cal ; `
+  *  `ls abc && ls`
+  *  `ls a || ls b`
+
+* true, false
+
+* mesg, write
+
+  *  `mesg -v`
+  *  `mesg y`
+  *  `mesg n`
+
+* finger
+
+* function
+
+  * ```shell
+    youtube()
+    {
+    	echo "Good morning."
+    }
+    byebye()
+    {
+    	echo "byebye sky!"
+    }
+    ```
+
+  * `. func.sh`: 导入函数
+
+  * unset youtube`: remove function
