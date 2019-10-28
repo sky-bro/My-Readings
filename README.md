@@ -8,3 +8,8 @@
 
 ## Finished
 
+## ToDo
+
+* how to use Nmap
+
+* [the cryptopals crypto challenges](https://cryptopals.com/)

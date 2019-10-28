@@ -190,6 +190,12 @@
   2. Firstly, contrary to the belief in the passage that the occupant of the grave is very likely to be King Raedwald since a pair of spoons identified by archaeological technology indicated its date around A.D. 620, while King Raedwald died in A.D. 624, the professor asserts that the technology might not be reliable. The spoons have also been dated to twenty-five years after the king died and the date of the King's death is not exactly accurate. 
   3. Secondly, the author of the passage points out that the spoons engraved with the names of two Catholic missionaries indicated that they might be gifts to Raedwald, because the king converted to Catholicism, while the lecture notes that the spoons engraved with two missionaries' names might be gifts to  anybody who converted to Catholicism, and not necessarily King Raedwald.
   4. Lastly, opposing the author's belief that the grave is luxurious while the north-east of England at that time was poor, so its occupant must be a king, the professor contends that the luxurious grave simply might not be the king's, Perhaps there used to be other rich noblemen buried in such a grave.
+
+* s
+
+  1. In the lecture, the professor casts doubt on the reading passage's idea that the practice of using the beetles to control the growth of tamarisk is unfeasible. The professor asserts that the beetles can control the growth of tamarisk trees and will not harm the local ecological balance.
+  2. Firstly, contrary to the belief in the passage that the beetles eat a wide range of plant species other than the tamarisk, and thus can be disastrous to other trees, the professor asserts that the beetles prefer the tamarisk trees and only eat 80% of them, which helps ease the growth of the tree species while preventing the beetles from consuming other species.
+  3. 
 ## 三选一题型（少）
 
 ###  写法1，ABC都探讨
@@ -254,3 +260,6 @@
   3. 假设对比
 * 积累
   * By contrast
+  * Conversely
+  * In the past..., today...
+  * Suppose..

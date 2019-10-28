@@ -689,12 +689,35 @@
 ## 第6章 以template进行编程
 
 * 被参数化的类型
+
 * Class Template的定义
+
+  * 在类体外，class template member function定义如下
+
+  * ```c++
+    template <typename elemType>
+    inline BinaryTree<elemType>::
+    BinaryTree() : _root(0) 
+    {}
+    ```
+
 * Template类型参数的处理
+
+  * 实际运用中，不论内置类型或class类型，都可能被指定为class template的实际类型。我建议所有的template类型参数视为**class类型**来处理。
+  * 这意味着我们会把它声明为一个const reference，而非以by value方式传递
+  * 在constructor中，选择在member initialization list内为每个类型参数进行初始化操作
+  * 这样，当我们为elemType指定一个class类型时，可以保证效率最佳
+
 * 实现一个Class Template
+
+  * 
+
 * 以一个Function Template完成的Output运算符
+
 * 常量表达式与默认参数值
+
 * 以Template参数作为一种设计策略
+
 * Member Template Function
 
 ## 第7章 异常处理

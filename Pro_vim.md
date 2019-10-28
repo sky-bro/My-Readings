@@ -304,6 +304,42 @@
   * Quote "|'|`
   * Block `{}|[]|()|<>`
 * Executing Commands Within INSERT Mode
-  * `<C-o>`
+  * `<C-o>` drop you back into INSERT mode after executing command
 
 ## CH06 Registers
+
+* 9 registers, each one handles different content that has been placed into it, via a specific user action.
+  1. The unnamed register ""
+  2. 10 numbered registers "0 to "9
+  3. The small delete register "-
+  4. 26 named registers "a to "z or "A to "Z
+  5. read-only registers ":, "., "%, and "#
+  6. The expression register "=
+  7. The selection and drop register "*, "+, and "~
+  8. The black hole register "_
+  9. Last search pattern register "/
+* view the contents of each register by `:reg`, `:reg 0 * a`
+* paste the content of the named register b into our buffer `"bp`
+* The contents of the registers are also stored in a local file, `~/.viminfo`, that is loaded when Vim starts up (This is how Vim remembers the content of your register even after you restart Vim)
+* Unnamed Register
+  * If we were to delete(d), change(c), substitute(s), cut(x), or yank(y) content, that content would end up in the unnamed register
+  * Vim uses this register effectively as a "last used register"
+* Numbered Register
+  * text that is yanked(y) or deleted(d) is automatically placed inside the numbered registers 0-9
+  * shift down as more contents are stored in
+  * paste content inside the fifth register`"4p`
+  * store content in a specific numbered register `viw"2y`
+* Small Delete Register
+  * if you delete content that is less than one line in length, it'll e placed inside the "Small delete" buffer ("-)
+* Named Register
+  * Vim only stores content in the named register when you explicitly tell it to do so.
+  * lowercase version wipes space before storing content
+  * uppercase version appends content to whatever already exists
+* Read-Only Register
+  * holds content that you can't overwrite by trying to store explicitly in the register
+    * `".` holds the last edit made via INSERT mode
+    * `"%` holds the name of the current file
+    * `"#` holds the name of the current alternative file
+    * `":` holds the name of the most recently executed COMMAND-LINE command
+* Expression Register
+  * 

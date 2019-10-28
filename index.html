@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        text-align: center;    
+      }
+      </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>主机</th>
+        <th>操作系统</th>
+        <th>主要的开放端口</th>
+        <th>对应服务版本</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="7">网站服务器(10.10.10.129)</td>
+        <td rowspan="7">Linux 2.6.X(Ubuntu)</td>
+        <td>SSH(22)</td>
+        <td>OpenSSH 5.3p1</td>
+      </tr>
+      <tr>
+        <td>HTTP(80)</td>
+        <td>Apache httpd 2.2.14</td>
+      </tr>
+      <tr>
+        <td>netbios-ssn(139)</td>
+        <td>Samba smbd3.X</td>
+      </tr>
+      <tr>
+        <td>Imap(143)</td>
+        <td>Courier Imapd(released 2008)</td>
+      </tr>
+      <tr>
+        <td>netbios-ssn(445)</td>
+        <td>Samba smbd3.X</td>
+      </tr>
+      <tr>
+        <td>commplex-link(5001)</td>
+        <td>Oracle VM Manager</td>
+      </tr>
+      <tr>
+        <td>HTTP(8080)</td>
+        <td>Apache Tomcat/Coyte JSP engine 1.1</td>
+      </tr>
+      <tr>
+        <td rowspan="15">后台服务器(10.10.10.130)</td>
+        <td rowspan="15">Microsoft Windows XP|2003</td>
+        <td>FTP(21)</td>
+        <td>Microsoft ftpd</td>
+      </tr>
+      <tr>
+        <td>HTTP(80)</td>
+        <td>Microsoft IIS httpd 6.0</td>
+      </tr>
+      <tr>
+        <td>MSRPC(135)</td>
+        <td>Microsoft Windows RPC</td>
+      </tr>
+      <tr>
+        <td>netbios-ssn(139)</td>
+        <td>空</td>
+      </tr>
+      <tr>
+        <td>Microsoft-ds(445)</td>
+        <td>Microsoft Windows 2003 or 2008 microsoft-ds</td>
+      </tr>
+      <tr>
+        <td>multiling-http(777)</td>
+        <td>未知</td>
+      </tr>
+      <tr>
+        <td>MSRPC(1025)</td>
+        <td>Microsoft Windows RPC</td>
+      </tr>
+      <tr>
+        <td>MSRPC(1026)</td>
+        <td>Microsoft Windows RPC</td>
+      </tr>
+      <tr>
+        <td>MSRPC(1027)</td>
+        <td>Microsoft Windows RPC</td>
+      </tr>
+      <tr>
+        <td>MSRPC(1031)</td>
+        <td>Microsoft Windows RPC</td>
+      </tr>
+      <tr>
+        <td>oracle-tns(1521)</td>
+        <td>Oracle TNS Listener 10.2.0.1.0(for 32-bit Windows)</td>
+      </tr>
+      <tr>
+        <td>HTTP(6002)</td>
+        <td>SafeNet Sentinel License Monitor httpd 7.3</td>
+      </tr>
+      <tr>
+        <td>afs3-callback(7001)</td>
+        <td>未知</td>
+      </tr>
+      <tr>
+        <td>HTTP(7002)</td>
+        <td>SafeNet Sentinel Keys License Monitor httpd 1.0(Java Console)</td>
+      </tr>
+      <tr>
+        <td>HTTP(8099)</td>
+        <td>Microsoft IIS httpd 6.0</td>
+      </tr>
+      <tr>
+        <td rowspan="8">网关服务器(10.10.10.254)</td>
+        <td rowspan="8">Unix, Linux</td>
+        <td>FTP(21)</td>
+        <td>vsftpd 2.2.2</td>
+      </tr>
+      <tr>
+        <td>SSH(22)</td>
+        <td>OpenSSH 5.3p1</td>
+      </tr>
+      <tr>
+        <td>HTTP(80)</td>
+        <td>Apache httpd 2.2.14</td>
+      </tr>
+      <tr>
+        <td>netbios-ssn(139)</td>
+        <td>Samba smbd3.X</td>
+      </tr>
+      <tr>
+        <td>Imap(143)</td>
+        <td>Courier Imapd(released 2008)</td>
+      </tr>
+      <tr>
+        <td>netbios-ssn(445)</td>
+        <td>Samba smbd3.X</td>
+      </tr>
+      <tr>
+        <td>ovm-manager(5001)</td>
+        <td>Oracle VM Manager</td>
+      </tr>
+      <tr>
+        <td>HTTP(8080)</td>
+        <td>Apache Tomcat/Coyte JSP engine 1.1</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
