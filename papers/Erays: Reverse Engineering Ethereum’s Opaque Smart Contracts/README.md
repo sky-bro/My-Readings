@@ -37,7 +37,7 @@
 
 * 每个合约的字节码是公开的，但字节码是不便于我们阅读与理解的，进而限制了我们对该合约的理解。我们先分析有多少的合约是不能直接得到源代码的，然后看这些合约在这个生态中的重要性。
 * 收集了1024886个合约，不重复的只有34328(占总数的3%左右)，在这些不同的合约中，有26594个是不透明的，7734个是透明的，不透明的占了77.3%，但只参与了31.6%的交易，含有25.9%的以太币
-  * ![Table 1: Opacity in Ethereum Blockchain](images/Opacity in Ethereum Blockchain.png)
+  * ![Table 1: Opacity in Ethereum Blockchain](images/Opacity_in_Ethereum_Blockchain.png)
   * 为了知道合约是否有对应的源代码，使用了Etherscan收集verified合约(Solidity files)，然后将它们编译
 * 通过比较，发现1M个合约实例中，有965K不能找到相应匹配的源代码(96.5%)，在34K个不同的合约中，能找到匹配的有7.7K (22.7%)，也就是说有77.3%的不同的合约都是未知的。
 * 那么这77.3%的合约重要性怎么样呢？两个指标：每个合约账号中存储的以太币多少，每个合约账号的交易笔数
@@ -49,7 +49,7 @@
   * 输入是十六进制编码的合约
   * 首先通过简单的线性扫描将十六进制串转换为对应的EVM指令
   * 然后将指令组织成一个个基本块，具体方法是通过两条简单规则：改变控制流的指令标志着块的结束，特殊指令JUMPDEST标志着块的开始。当所有的块入口与块出口都标记完毕，基本块的划分也就完成了
-  * ![example of basic block identification](images/basic blocks.png)
+  * ![example of basic block identification](images/basic_blocks.png)
 * 控制流图CFG (control flow graph)的恢复
   * CFG是一个有向图，每个节点表示一个基本块，每条边表示一个程序分支（从某个块到某个块），这需要我们为每个基本块找到其后继块
   * 具体方法是观察该块的最后一条指令，三种情况
@@ -57,7 +57,7 @@
     2. 运行结束(STOP, REVERT, INVALID, RETURN, SELFDESTRUCT)：没有后继块
     3. 分支跳转(JUMP, JUMPI)：取决于跳转指令的目标地址，有的目标地址直接就在代码中——叫做直接分支，有的在栈中——叫做间接分支。
   * 为了处理间接分支的情况，在CFG恢复的算法中模拟栈的状态
-  * ![CFG recovery algorithm](images/CFG recovery algorithm.png)
+  * ![CFG recovery algorithm](images/CFG_recovery_algorithm.png)
 * 提升
   * 将EVM的基于栈的指令提升（转换）为基于寄存器的指令，基于寄存器的指令保留了大多原来的操作方式，加入了少量操作，便于更简洁易懂地表示
 * INTCALL, INTRET: 它们分别负责内部函数的调用与返回，不像外部函数通过CALL来调用，内部函数隐含地使用JUMP指令，我们启发式地发现内部函数调用，让我们能进一步精简CFG
@@ -65,14 +65,14 @@
   * NEQ, GEQ, LEQ, SL, SR: 这些指令对应不等于，大于等于，小于等于，左移与右移。虽然这些指令不在EVM指令集中，但它们的功能很常用，有了它们，我们能合并更多的EVM指令。
   * MOVE: 把某常量或寄存器中的值复制到另一个寄存器，把SWAP, DUP和PUSH指令都改为了MOVE指令
   * 为了得到指令操作的寄存器，把栈中的每一个word与一个寄存器对应，从\$s0到\$s1023，因为EVM栈最大为1024个words，另外还增加了\$m与\$t两个寄存器，分别用于保存free memory pointer与临时变量(比如在SWAP时需要的临时变量)，所以为了能正确地读写寄存器，栈的高度必须已知，如下图表示了指令`ADD $s1, $s2, $s1`的过程。
-  * ![lifting an ADD instruction](images/lifting an ADD instruction.png)
+  * ![lifting an ADD instruction](images/lifting_an_ADD_instruction.png)
 * 优化
   * 将我们的中间代码进一步优化，主要利用数据流优化，包括常量合并，常量传递，复制传递还有无效代码删除等。这些优化都是为了能进一步简化代码，大多的EVM指令都是用在了操作栈上，所以提升的指令中有很多的MOVE指令，优化阶段能将许多多余的代码删除掉。
 * 聚合
   * 聚合目的是进一步简化中间表示，将它们替换为等价的，更简练的形式，更加接近高级语言。
   * 比如将下面这个三地址码形式表示的指令，精简为了一条语句
-  * ![three address form](images/three address form.png)
-  * ![aggregated form](images/aggregated form.png)
+  * ![three address form](images/three_address_form.png)
+  * ![aggregated form](images/aggregated_form.png)
 * 控制流结构恢复
   * 我们采用结构分析算法来恢复高级程序控制结构，比如while语句，if then else语句等
 * 验证
@@ -85,7 +85,7 @@
 * 代码复杂程度与复用情况：收集了34K不同的合约，其中26K (77.3%)没有现成的源代码，这些合约与12.7M笔交易有关，含有$3B USD
 * 复杂性：发现合约大小稳步增长，但复杂度确是下降或者是稳定趋势
 * 代码复用：发现有好些函数能在许多的合约中找到，但这些常见的函数通常对我们没有太大意义，它们主要都是一些公共的getter函数，用来获取某个类型数据用的。进一步研究外部函数，然后统计它们的实现方式个数，前10结果如下：
-* ![function distribution](images/function distribution.png)
+* ![function distribution](images/function_distribution.png)
 * 可以看出，尽管它们在许多合约中出现，但是实现方式并没有那么多。
 
 ### 将没有源代码的合约与已知的源代码联系起来
