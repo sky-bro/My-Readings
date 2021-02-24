@@ -19,8 +19,8 @@
 
 ## 第3章 泛型编程风格
 
-* STL主要由两种组件构成
-  * 一是容器，包括vector、list、set、map等类
+* STL主要包含两部分
+  * 一是包括vector、list、set、map的容器类
   * 二是用以操作容器的泛型算法generic algorithm。包括find()、sort()、replace()、merge()等
   
 * 容器
@@ -48,7 +48,7 @@
     * erase()
   
 * 泛型算法
-  * 通过function template达到与操作**对象的类型**相互独立
+  * 通过function template达到与操作**对象的类型**无关
   
   * 而通过不直接在容器身上操作而借由如iterate进行迭代，达到与**容器**无关
   
@@ -294,7 +294,7 @@
     Triangular t; // 调用default constructor
     Triangular t2(10, 3);
     Triangular t3 = 8; // 注意，这里究竟是调用Constructor还是assignment operator呢，答案是（单一参数的）Constructor
-    Triangular t4(); // 这里将t4定义为一个函数，正确声明方式应该和上面的t一样 Triangular t4;
+    Triangular t4(); // 这里将t4声明为一个函数，正确声明方式应该和上面的t一样 Triangular t4;
     ```
   
   * default Constructor不需要任何参数，有两种情况
@@ -306,7 +306,7 @@
   
     * 主要用于将参数传给member class object的constructor
   
-  * 合适需要定义Destructor而何时不需要
+  * 何时需要定义Destructor而何时不需要
   
 * copy Constructor
 
@@ -515,10 +515,8 @@
       (lt.*ff)();
       return 0;
     }
-    
     ```
-
-* 
+  
 
 ## 第5章 面对对象编程风格
 
@@ -554,7 +552,9 @@
   * 任何类如果有一个（或多个）纯虚函数，那么，由于其接口的不完整性（纯虚函数没有函数定义），程序无法为它产生任何对象
   * static member function不能声明为虚函数
   * 根据一般规则，凡基类定义有一个或多个虚函数，应该要将其destructor声明为virtual
+    * Deleting a derived class object using a pointer of base class type that has a non-virtual destructor results in undefined behavior
   * 最好不要将virtual deconstructor设为纯虚函数
+    *  the compiler and linker enforce the existence of a function body for pure virtual destructors.
   
 * 定义一个派生类
 
@@ -726,5 +726,5 @@
 * 捕获异常
 * 提炼异常
 * 局部资源管理
+  * 智能指针
 * 标准异常
-* 
